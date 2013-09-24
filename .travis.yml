@@ -8,11 +8,10 @@ python:
 compiler:
   - gcc
 before_install:
-  - wget https://raw.github.com/jhu-lcsr/ros_ci_tools/master/ros_ci_bootstrap.sh
-  - chmod +x ros_ci_bootstrap.sh
+  - wget https://raw.github.com/jhu-lcsr/ros_ci_tools/master/ros_ci_bootstrap.sh  - chmod +x ros_ci_bootstrap.sh
   - export SRC_PATHS="$(pwd)"
+  - ./ros_ci_bootstrap.sh
   - export EXTRA_CMAKE_ARGS="-DENABLE_CORBA=ON -DCORBA_IMPLEMENTATION=OMNIORB"
-
 install:
   # Build in an isolated catkin workspace
   - source /opt/ros/hydro/setup.bash
