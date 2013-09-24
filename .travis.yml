@@ -17,5 +17,5 @@ before_install:
   - rosdep install --from-paths . --ignore-src --rosdistro hydro -y
 script:
   - source /opt/ros/hydro/setup.bash
-  - catkin_make_isolated --source . -j1 --cmake-args -DENABLE_CORBA=ON -DCORBA_IMPLEMENTATION=OMNIORB
+  - catkin_make_isolated --install --source . -j1 --cmake-args -DENABLE_CORBA=ON -DCORBA_IMPLEMENTATION=OMNIORB
 
