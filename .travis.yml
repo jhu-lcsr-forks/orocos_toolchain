@@ -19,13 +19,15 @@ before_install:
 install:
   # Set up non-catkin build
   - pushd .
+  - mkdir build_non_catkin install_non_catkin
   - cd build_non_catkin
   - mkdir -p log4cpp orogen rtt ocl utilmm utilrb typelib rtt_typelib
+
   # First build without catkin
-  - pushd . && cd log4cpp && cmake ../../log4cpp && popd
-  - pushd . && cd orogen && cmake ../../orogen && popd
-  - pushd . && cd rtt && cmake ../../rtt $RTT_CORBA_CMAKE_ARGS && popd
-  - pushd . && cd ocl && cmake ../../ocl $RTT_CORBA_CMAKE_ARGS && popd
+  - pushd . && cd log4cpp && cmake ../../log4cpp && sudo make all install && popd
+  - pushd . && cd orogen && cmake ../../orogen && sudo make all install && popd
+  - pushd . && cd rtt && cmake ../../rtt $RTT_CORBA_CMAKE_ARGS && sudo make all install && popd
+  - pushd . && cd ocl && cmake ../../ocl $RTT_CORBA_CMAKE_ARGS && sudo make all install && popd
   # Second, build with catkin
   - popd
   - source /opt/ros/hydro/setup.bash
