@@ -35,8 +35,8 @@ install:
   # Uninstall without catkin
 
   # Second, build with catkin
-  - popd
-  - source /opt/ros/hydro/setup.bash
-  - catkin_make_isolated --install --source . -j1 --cmake-args $RTT_CORBA_CMAKE_ARGS
+  #- popd
+  #- source /opt/ros/hydro/setup.bash
+  #- catkin_make_isolated --install --source . -j1 --cmake-args $RTT_CORBA_CMAKE_ARGS
 
-
+script: ""
