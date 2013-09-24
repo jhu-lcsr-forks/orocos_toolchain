@@ -15,7 +15,20 @@ before_install:
   - sudo rosdep init
   - rosdep update -qq
   - rosdep install -qq --from-paths . --ignore-src --rosdistro hydro -y
-script:
+  - export RTT_CORBA_CMAKE_ARGS="-DENABLE_CORBA=ON -DCORBA_IMPLEMENTATION=OMNIORB"
+install:
+  # Set up non-catkin build
+  - pushd .
+  - cd build_non_catkin
+  - mkdir -p log4cpp orogen rtt ocl utilmm utilrb typelib rtt_typelib
+  # First build without catkin
+  - pushd . && cd log4cpp && cmake ../../log4cpp && popd
+  - pushd . && cd orogen && cmake ../../orogen && popd
+  - pushd . && cd rtt && cmake ../../rtt $RTT_CORBA_CMAKE_ARGS && popd
+  - pushd . && cd ocl && cmake ../../ocl $RTT_CORBA_CMAKE_ARGS && popd
+  # Second, build with catkin
+  - popd
   - source /opt/ros/hydro/setup.bash
-  - catkin_make_isolated --install --source . -j1 --cmake-args -DENABLE_CORBA=ON -DCORBA_IMPLEMENTATION=OMNIORB
+  - catkin_make_isolated --install --source . -j1 --cmake-args $RTT_CORBA_CMAKE_ARGS
+
 
