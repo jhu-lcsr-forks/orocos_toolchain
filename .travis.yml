@@ -32,10 +32,11 @@ install:
   - pushd . && cd utilrb  && cmake ../../utilrb && sudo make all install && popd
   - pushd . && cd typelib  && cmake ../../typelib && sudo make all install && popd
   - pushd . && cd rtt_typelib  && cmake ../../rtt_typelib && sudo make all install && popd
+
   # Uninstall without catkin
+  - popd
 
   # Second, build with catkin
-  #- popd
   #- source /opt/ros/hydro/setup.bash
   #- catkin_make_isolated --install --source . -j1 --cmake-args $RTT_CORBA_CMAKE_ARGS
 
