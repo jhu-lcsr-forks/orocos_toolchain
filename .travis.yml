@@ -8,36 +8,14 @@ python:
 compiler:
   - gcc
 before_install:
-  - sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu precise main" > /etc/apt/sources.list.d/ros-latest.list'
-  - wget http://packages.ros.org/ros.key -O - | sudo apt-key add -
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq -y python-catkin-pkg python-rosdep ros-hydro-catkin
-  - sudo rosdep init
-  - rosdep update
-  - rosdep install --from-paths . --ignore-src --rosdistro hydro -y > /dev/null
-  - export RTT_CORBA_CMAKE_ARGS="-DENABLE_CORBA=ON -DCORBA_IMPLEMENTATION=OMNIORB"
+  - wget https://raw.github.com/jhu-lcsr/ros_ci_tools/master/ros_ci_bootstrap.sh
+  - chmod +x ros_ci_bootstrap.sh
+  - export SRC_PATHS="$(pwd)"
+  - export EXTRA_CMAKE_ARGS="-DENABLE_CORBA=ON -DCORBA_IMPLEMENTATION=OMNIORB"
+
 install:
-  # Set up non-catkin build
-  - pushd .
-  - mkdir build_non_catkin
-  - cd build_non_catkin
-  - mkdir -p log4cpp orogen rtt ocl utilmm utilrb typelib rtt_typelib
-
-  # First build without catkin
-  - pushd . && cd log4cpp && cmake ../../log4cpp && sudo make all install && popd
-  - pushd . && cd orogen && cmake ../../orogen && sudo make all install && popd
-  - pushd . && cd rtt && cmake ../../rtt $RTT_CORBA_CMAKE_ARGS && sudo make all install && popd
-  - pushd . && cd ocl && cmake ../../ocl $RTT_CORBA_CMAKE_ARGS && sudo make all install && popd
-  - pushd . && cd utilmm  && cmake ../../utilmm && sudo make all install && popd
-  - pushd . && cd utilrb  && cmake ../../utilrb && sudo make all install && popd
-  - pushd . && cd typelib  && cmake ../../typelib && sudo make all install && popd
-  - pushd . && cd rtt_typelib  && cmake ../../rtt_typelib && sudo make all install && popd
-
-  # Uninstall without catkin
-  - popd
-
-  # Second, build with catkin
-  #- source /opt/ros/hydro/setup.bash
-  #- catkin_make_isolated --install --source . -j1 --cmake-args $RTT_CORBA_CMAKE_ARGS
+  # Build in an isolated catkin workspace
+  - source /opt/ros/hydro/setup.bash
+  - catkin_make_isolated --install --source . -j1 --cmake-args $EXTRA_CMAKE_ARGS
 
 script: ""
