@@ -1,24 +1,24 @@
 [submodule "rtt"]
 	path = rtt
-	url = git@github.com:jhu-lcsr-forks/rtt.git
+	url = https://github.com/jhu-lcsr-forks/rtt.git
 [submodule "ocl"]
 	path = ocl
-	url = git@github.com:jhu-lcsr-forks/ocl.git
+	url = https://github.com/jhu-lcsr-forks/ocl.git
 [submodule "orogen"]
 	path = orogen
-	url = git@github.com:jhu-lcsr-forks/orogen.git
+	url = https://github.com/jhu-lcsr-forks/orogen.git
 [submodule "typelib"]
 	path = typelib
-	url = git@github.com:orocos-toolchain/typelib.git
+	url = https://github.com/orocos-toolchain/typelib.git
 [submodule "utilmm"]
 	path = utilmm
-	url = git@github.com:orocos-toolchain/utilmm.git
+	url = https://github.com/orocos-toolchain/utilmm.git
 [submodule "utilrb"]
 	path = utilrb
-	url = git@github.com:jhu-lcsr-forks/utilrb.git
+	url = https://github.com/jhu-lcsr-forks/utilrb.git
 [submodule "log4cpp"]
 	path = log4cpp
-	url = git@github.com:orocos-toolchain/log4cpp.git
+	url = https://github.com/orocos-toolchain/log4cpp.git
 [submodule "rtt_typelib"]
 	path = rtt_typelib
-	url = git@github.com:orocos-toolchain/rtt_typelib.git
+	url = https://github.com/orocos-toolchain/rtt_typelib.git
