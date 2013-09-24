@@ -13,8 +13,8 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y python-catkin-pkg python-rosdep
   - sudo rosdep init
-  - rosdep update
-  - rosdep install --from-paths . --ignore-src --rosdistro hydro -y
+  - rosdep update -qq
+  - rosdep install -qq --from-paths . --ignore-src --rosdistro hydro -y
 script:
   - source /opt/ros/hydro/setup.bash
   - catkin_make_isolated --install --source . -j1 --cmake-args -DENABLE_CORBA=ON -DCORBA_IMPLEMENTATION=OMNIORB
