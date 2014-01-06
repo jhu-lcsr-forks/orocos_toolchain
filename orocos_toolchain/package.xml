@@ -1,6 +1,6 @@
 <package>
   <name>orocos_toolchain</name>
-  <version>2.6.0</version>
+  <version>2.7.0</version>
   <description>
     This package provides the entire orocos_toolchain
   </description>
@@ -8,6 +8,7 @@
   <license>GPL v2 + linking exception, LGPL v2, CeCILL-B, GPL v2 or later, </license>
 
   <buildtool_depend>catkin</buildtool_depend>
+  <run_depend>catkin</run_depend>
 
   <run_depend>rtt</run_depend>
   <run_depend>ocl</run_depend>
@@ -17,6 +18,10 @@
   <run_depend>utilmm</run_depend>
   <run_depend>utilrb</run_depend>
   <run_depend>orogen</run_depend>
+
+  <export>
+    <metapackage/>
+  </export>
 
 </package>
 
