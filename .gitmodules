@@ -12,7 +12,7 @@
 	url = https://github.com/orocos-toolchain/typelib.git
 [submodule "utilmm"]
 	path = utilmm
-	url = ../utilmm.git
+	url = https://github.com/orocos-toolchain/utilmm.git
 [submodule "utilrb"]
 	path = utilrb
 	url = ../utilrb
